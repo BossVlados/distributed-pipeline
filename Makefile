@@ -1,4 +1,4 @@
-.PHONY: up down logs migrate clean
+.PHONY: up down logs clean migrate migrate-down
 
 up:
 	docker-compose up -d
@@ -13,6 +13,11 @@ clean:
 	docker-compose down -v
 	rm -rf minio_data postgres_data redis_data
 
-# Позже добавим команду для миграций
 migrate:
-	@echo "Миграции пока не настроены"
+	./scripts/migrate.sh up
+
+migrate-down:
+	./scripts/migrate.sh down
+
+migrate-force:
+	./scripts/migrate.sh force $(VERSION)
