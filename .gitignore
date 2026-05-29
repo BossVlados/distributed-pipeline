@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+*.pyc
+.env
+minio_data/
+postgres_data/
+redis_data/
+.DS_Store
